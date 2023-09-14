@@ -7,10 +7,11 @@ import Formularios from "@/components/formularios"
 import StyledInputs from "@/components/styledinputs"
 import StyledButtons from "@/components/styledbuttons"
 import Socials from "@/components/socials"
+import Printela from "@/components/printela"
 
 export default function Registro(){
     return(
-        <main className="h-screen flex justify-center items-center flex-col mb-14 mt-14">
+        <Printela>
             <Header/>
             <Formularios>
                 <form action="" className="gap-4 flex flex-col mt-10 text-slate-400">
@@ -25,6 +26,6 @@ export default function Registro(){
                 <hr className='mt-5 border-slate-400' />
             </Formularios>
             <Socials></Socials>
-        </main >
+        </Printela>
     )
 }
