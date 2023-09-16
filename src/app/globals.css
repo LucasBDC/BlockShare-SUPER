@@ -20,3 +20,7 @@ body {
   color: #FFF;
   background: linear-gradient(180deg, #1E1E1E 0%, #0C0C0C 100%);
 }
+
+.conteudodiv{
+  background: linear-gradient(180deg, #471757 0%, rgba(71, 23, 87, 0.00) 100%);
+}
