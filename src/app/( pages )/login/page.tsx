@@ -16,10 +16,10 @@ interface User {
   password: string;
 }
 // Function component
-export default function Login(): React.ReactElement {
+export default function Login() {
   // State variables
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // Router
   const router = useRouter();
