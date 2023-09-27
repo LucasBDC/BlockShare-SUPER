@@ -26,17 +26,20 @@ export default function Login() {
 
   // Function to handle sign in
   async function handleSignIn() {
-    try {
-      // Sign in with Firebase Auth
-      await signInWithEmailAndPassword(auth, email, password);
-
-      // Redirect to the home page
-      router.push("/");
-    } catch (error: any) {
-      // Display an error message to the user
-      alert(error.message);
-    }
+    async function handleSignIn() {
+        if (typeof window !== 'undefined') {
+          // Sign in with Firebase Auth
+          await signInWithEmailAndPassword(auth, email, password);
+    
+          // Redirect to the home page
+          router.push("/");
+        } else {
+            console.log('error')
+          // Do something else if the `window` object is not defined
+        }
+      }
   }
+    
 
   // Render the component
   return (

@@ -31,7 +31,7 @@ export default function Registro() {
   const [gender, setGender] = useState('');
 
   async function handleSignUp() {
-    try {
+    if(typeof window !== 'undefined') {
       // Create a new user with Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -63,9 +63,9 @@ export default function Registro() {
   
       // Display an alert message to the user
       alert('Sign up successful!');
-    } catch (error : any) {
+    } else {
       // Display an error message to the user
-      alert(`Sign up failed: ${error.code} - ${error.message}`);
+      alert(`Sign up failed`);
     }
   }
 
