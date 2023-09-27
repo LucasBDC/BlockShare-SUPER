@@ -1,7 +1,8 @@
 'use client'
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { SetStateAction, useState } from "react";
 import {} from '@/app/( firebase )/firebase'
+import { useRouter } from "next/navigation";
 import {auth, app} from '@/app/( firebase )/firebase'
 
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -10,6 +11,7 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 import StyledInputs from "@/components/styledinputs";
 import Printela from "@/components/printela";
 import StyledButtons from "@/components/styledbuttons";
+import { Router } from "next/router";
 
 // Constants
 const FIREBASE_AUTH = getAuth();
@@ -23,6 +25,7 @@ interface User {
 
 // Function component
 export default function Registro() {
+  const router =  useRouter()
   // State variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -69,10 +72,12 @@ export default function Registro() {
     }
   }
 
+  
+
   // Render the component
   return (
     <Printela>
-      <form method="POST" onSubmit={handleSignUp}>
+      <form method="POST">
         <StyledInputs
           type="email"
           placeholder="E-Mail"
@@ -114,7 +119,7 @@ export default function Registro() {
           <option value="male">Masculino</option>
           <option value="female">Feminino</option>
         </select>
-        <StyledButtons texto="Cadastrar" />
+        <StyledButtons texto="Cadastrar" onclick={() => {handleSignUp()}}/>
       </form>
     </Printela>
   );
