@@ -24,7 +24,6 @@ export default function LoggedInGuard({ children }: { children: React.ReactNode 
     );
   } else {
     // Redirect the user to the login page
-    router.push("/login");
     return <Login/>;
   }
 }
