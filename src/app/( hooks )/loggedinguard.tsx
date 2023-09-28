@@ -11,7 +11,7 @@ const LoggedInGuard = ({ children }: { children: React.ReactNode }): React.React
 
   // Check if the user is logged in
   if (!auth.currentUser) {
-    router.push("/login");
+    router.push('/');
   }
 
   return (
