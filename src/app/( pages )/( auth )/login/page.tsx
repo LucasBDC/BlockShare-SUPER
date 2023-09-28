@@ -1,5 +1,4 @@
 'use client'
-Login.post = true;
 
 // Import dependencies
 import React, { useState } from "react";
@@ -64,8 +63,7 @@ export default function Login() {
 
   // Render the component
   return (
-    <div className="h-screen flex justify-center items-center ">
-        <form onSubmit={handleSignIn} method="POST">
+    <div className="h-screen flex justify-center items-center flex-col">
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
@@ -78,8 +76,8 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR"/>
-        </form>
+        <StyledButtons texto="ENTRAR" onclick={() => {handleSignIn()}}/>
+        <StyledButtons texto="GOOGLE" onclick={() => {HandleGoogleSignup()}}/>
     </div>
   );
 }
