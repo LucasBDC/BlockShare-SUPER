@@ -2,7 +2,7 @@
 
 // Import dependencies
 import React, { useState } from "react";
-import {auth, provider} from '@/app/( firebase )/firebase'
+import {auth, app, provider} from '@/app/( firebase )/firebase'
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
@@ -21,7 +21,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function HandleGoogleSignup(){
+  function HandleGoogleSignup(){
     signInWithPopup(auth, provider)
     
   .then((result : any) => {
@@ -50,25 +50,26 @@ export default function Login() {
   const router = useRouter();
 
   // Function to handle sign in
-  async function handleSignIn() {
-   await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential : any) => {
+  function handleSignIn() {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
       router.push('/dashboard')
       // ...
     })
-    .catch((error : any) => {
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert('aaa')
     });
   }
     
+
   // Render the component
   return (
-    <div className="h-screen flex justify-center items-center flex-col ">
-      <form method="POST" onSubmit={handleSignIn}>
+    <div className="h-screen flex justify-center items-center ">
+      <form method="POST">
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
@@ -81,10 +82,8 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR"/>
-      </form>
-      <form method="post" onSubmit={HandleGoogleSignup}>
-        <StyledButtons texto="google"/>
+        <StyledButtons texto="ENTRAR" onclick={() => {handleSignIn()}}/>
+        <StyledButtons texto="google" onclick={() => {HandleGoogleSignup()}}/>
       </form>
     </div>
   );
