@@ -1,5 +1,4 @@
 'use client'
-
 // Import dependencies
 import React, { useState } from "react";
 import {auth, app, provider} from '@/app/( firebase )/firebase'
@@ -12,13 +11,14 @@ import StyledButtons from "@/components/styledbuttons";
 
 // Function component
 export default function Login() {
+
   // State variables
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const router = useRouter();
 
- function HandleGoogleSignup(){
+  function HandleGoogleSignup() {
     signInWithPopup(auth, provider)
     
   .then((result) => {
@@ -59,26 +59,30 @@ export default function Login() {
       alert(error.message)
     });
   }
-    
 
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center flex-col">
-        <form action="" onSubmit={handleSignIn} method="post">
-        <StyledInputs
-          type="email"
-          placeholder="E-Mail"  
-          value={email}
-          onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
-        />
-        <StyledInputs
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
-        />
-        <StyledButtons texto="ENTRAR"/>
-        <StyledButtons texto="GOOGLE" onclick={() => {HandleGoogleSignup()}}/>
+        <form onSubmit={handleSignIn} method="post">
+          <StyledInputs
+            type="email"
+            placeholder="E-Mail"  
+            value={email}
+            name="email"
+            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+          />
+          <StyledInputs
+            type="password"
+            name="password"
+            placeholder="Senha"
+            value={password}
+            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
+          />
+          <StyledButtons texto="ENTRAR"/>
+          
+        </form>
+        <form onSubmit={HandleGoogleSignup}>
+        <StyledButtons texto="GOOGLE"/>
         </form>
     </div>
   );

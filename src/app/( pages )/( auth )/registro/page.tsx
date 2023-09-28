@@ -73,7 +73,7 @@ export default function Registro() {
   // Render the component
   return (
     <Printela>
-      
+        <form onSubmit={handleSignUp} method="post">
         <StyledInputs
           type="email"
           placeholder="E-Mail"
@@ -115,7 +115,8 @@ export default function Registro() {
           <option value="male">Masculino</option>
           <option value="female">Feminino</option>
         </select>
-        <StyledButtons texto="Cadastrar" onclick={() => {handleSignUp()}}/>
+        <StyledButtons texto="Cadastrar"/>
+        </form>
     </Printela>
   );
 }
