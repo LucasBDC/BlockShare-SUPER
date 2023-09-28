@@ -1,7 +1,7 @@
 'use client'
 
 // Import dependencies
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {auth, app, provider} from '@/app/( firebase )/firebase'
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -51,8 +51,7 @@ export default function Login() {
 
   // Function to handle sign in
   function handleSignIn() {
-    useRef(() =>{
-      signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
@@ -64,7 +63,6 @@ export default function Login() {
       const errorMessage = error.message;
       alert('aaa')
     });
-    })
   }
     
 
