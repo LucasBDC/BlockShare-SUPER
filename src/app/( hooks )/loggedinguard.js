@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/app/( firebase )/firebase";
 
 // Function component
-export default function LoggedInGuard({ children }: { children: React.ReactNode }): React.ReactElement {
+export default function LoggedInGuard({ children }) {
   // Router
   const router = useRouter();
 
@@ -12,7 +12,6 @@ export default function LoggedInGuard({ children }: { children: React.ReactNode 
   if(!auth.currentUser){
    router.push('/login')
   }
-  
   return(
      <div>{children}</div>
   )
