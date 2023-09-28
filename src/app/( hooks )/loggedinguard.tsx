@@ -1,7 +1,7 @@
-'use client'
+
 // Import dependencies
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { auth } from '@/app/( firebase )/firebase';
 
 // Function component
