@@ -1,4 +1,5 @@
 'use client'
+Login.post = true;
 
 // Import dependencies
 import React, { useState } from "react";
@@ -44,20 +45,21 @@ export default function Login() {
   });
 }
 
-
-async function handleSignIn() {
-  try {
-    // Efetuar login com o Firebase Auth
-    await signInWithEmailAndPassword(auth, email, password);
-
-    // Redirecionar para a página inicial
-    router.push("/");
-  } catch (error: any) {
-    // Exibir uma mensagem de erro para o usuário
-    alert(error.message);
+   function handleSignIn() {
+  // Function to handle sign in
+     signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      router.push('/dashboard')
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(error.message)
+    });
   }
-}
-
     
 
   // Render the component
@@ -76,7 +78,7 @@ async function handleSignIn() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR" />
+        <StyledButtons texto="ENTRAR"/>
         </form>
     </div>
   );
