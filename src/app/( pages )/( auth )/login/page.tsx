@@ -20,8 +20,7 @@ export default function Login() {
 
   function HandleGoogleSignup() {
     signInWithPopup(auth, provider)
-    
-  .then((result) => {
+    .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential =  GoogleAuthProvider.credentialFromResult(result);
     if(credential != null){
@@ -81,9 +80,9 @@ export default function Login() {
           <StyledButtons texto="ENTRAR"/>
           
         </form>
-        <form onSubmit={HandleGoogleSignup}>
-        <StyledButtons texto="GOOGLE"/>
-        </form>
+        {/* <form onSubmit={HandleGoogleSignup} method="post"> */}
+          <StyledButtons texto="GOOGLE" onclick={() => HandleGoogleSignup()}/>
+        {/* </form> */}
     </div>
   );
 }
