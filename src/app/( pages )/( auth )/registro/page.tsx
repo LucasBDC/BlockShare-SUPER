@@ -51,11 +51,6 @@ export default function Registro() {
       });
   
       // Save the user's age and gender to Firestore
-      const userProfileRef = doc(getFirestore(), "users", user.uid);
-        setDoc(userProfileRef, {
-        age,
-        gender,
-      });
   
       // Clear the sign up form
       setEmail('');
@@ -115,7 +110,7 @@ export default function Registro() {
             setAge(e.target.value as number);
           }}
         />
-        <select value={gender} onChange={(e) => setGender(e.target.value)} className="text-white bg-transparent border-white border">
+        <select value={gender} onChange={(e) => setGender(e.target.value)} className="text-white bg-transparent border-white border w-[100%] py-3 px-2 rounded-lg ">
           <option value="">Selecione o gênero</option>
           <option value="male">Masculino</option>
           <option value="female">Feminino</option>

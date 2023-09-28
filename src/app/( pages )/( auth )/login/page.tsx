@@ -24,7 +24,7 @@ export default function Login() {
   function HandleGoogleSignup(){
     signInWithPopup(auth, provider)
     
-  .then((result : any) => {
+  .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     if(credential != null){
@@ -35,7 +35,7 @@ export default function Login() {
     router.push('/dashboard')
     // IdP data available using getAdditionalUserInfo(result)
     // ...
-  }).catch((error : any) => {
+  }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -49,8 +49,8 @@ export default function Login() {
   // Router
   const router = useRouter();
 
-  // Function to handle sign in
   function handleSignIn() {
+  // Function to handle sign in
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
@@ -83,7 +83,7 @@ export default function Login() {
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
         <StyledButtons texto="ENTRAR" onclick={() => {handleSignIn()}}/>
-        <StyledButtons texto="google" onclick={() => {HandleGoogleSignup()}}/>
+        <StyledButtons texto="GOOGLE" onclick={() => {HandleGoogleSignup()}}/>
       </form>
     </div>
   );
