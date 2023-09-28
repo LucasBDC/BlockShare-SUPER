@@ -10,16 +10,13 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 import StyledInputs from "@/components/styledinputs";
 import StyledButtons from "@/components/styledbuttons";
 
-// Interfaces
-interface User {
-  email: string;
-  password: string;
-}
 // Function component
 export default function Login() {
   // State variables
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const router = useRouter();
 
  function HandleGoogleSignup(){
     signInWithPopup(auth, provider)
@@ -46,29 +43,27 @@ export default function Login() {
     // ...
   });
 }
-  // Router
-  const router = useRouter();
 
-  async function handleSignIn() {
-  // Function to handle sign in
-    await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      router.push('/dashboard')
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(error.message)
-    });
+
+async function handleSignIn() {
+  try {
+    // Efetuar login com o Firebase Auth
+    await signInWithEmailAndPassword(auth, email, password);
+
+    // Redirecionar para a página inicial
+    router.push("/");
+  } catch (error: any) {
+    // Exibir uma mensagem de erro para o usuário
+    alert(error.message);
   }
+}
+
     
 
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center ">
+        <form onSubmit={handleSignIn} method="POST">
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
@@ -81,7 +76,8 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR" onclick={() => handleSignIn()}/>
+        <StyledButtons texto="ENTRAR" />
+        </form>
     </div>
   );
 }
