@@ -66,6 +66,7 @@ export default function Registro() {
   
       // Display an alert message to the user
       alert('Sign up successful!');
+      router.push('/login')
     } else {
       // Display an error message to the user
       alert(`Sign up failed`);
