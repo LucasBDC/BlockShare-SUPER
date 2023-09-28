@@ -6,17 +6,6 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 export default function Dashboard(){
-    const router = useRouter();
-
-  // Get the current user
-
-  // Check if the user is logged in
-  useEffect(() => {
-    if (!auth.currentUser) {
-      router.push("/login");
-    }
-  }, [auth.currentUser]);
-
     return(
         <div className="flex h-screen justify-center items-center">
             <LoggedInGuard>
