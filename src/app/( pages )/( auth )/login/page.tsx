@@ -81,7 +81,7 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR"/>\
+        <StyledButtons texto="ENTRAR" onclick={() => handleSignIn()}/>
     </div>
   );
 }
