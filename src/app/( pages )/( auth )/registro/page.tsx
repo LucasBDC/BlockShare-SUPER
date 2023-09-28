@@ -73,7 +73,7 @@ export default function Registro() {
   // Render the component
   return (
     <Printela>
-      <form>
+      <form method="POST">
         <StyledInputs
           type="email"
           placeholder="E-Mail"

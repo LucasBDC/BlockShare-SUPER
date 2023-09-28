@@ -21,12 +21,12 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function HandleGoogleSignup(){
+ function HandleGoogleSignup(){
     signInWithPopup(auth, provider)
     
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const credential =  GoogleAuthProvider.credentialFromResult(result);
     if(credential != null){
       const token = credential.accessToken;
     }
@@ -69,7 +69,7 @@ export default function Login() {
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center ">
-      <form method="POST">
+      <form method="GET">
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
