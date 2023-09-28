@@ -21,7 +21,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function HandleGoogleSignup(){
+  async function HandleGoogleSignup(){
     signInWithPopup(auth, provider)
     
   .then((result : any) => {
@@ -50,8 +50,8 @@ export default function Login() {
   const router = useRouter();
 
   // Function to handle sign in
-  function handleSignIn() {
-    signInWithEmailAndPassword(auth, email, password)
+  async function handleSignIn() {
+   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential : any) => {
       // Signed in 
       const user = userCredential.user;
