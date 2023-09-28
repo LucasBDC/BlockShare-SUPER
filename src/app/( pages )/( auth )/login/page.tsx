@@ -49,9 +49,9 @@ export default function Login() {
   // Router
   const router = useRouter();
 
-  function handleSignIn() {
+  async function handleSignIn() {
   // Function to handle sign in
-    signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
@@ -61,7 +61,7 @@ export default function Login() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert('aaa')
+      alert(error.message)
     });
   }
     
@@ -69,7 +69,6 @@ export default function Login() {
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center ">
-      <form method="GET">
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
@@ -82,9 +81,7 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR" onclick={() => {handleSignIn()}}/>
-        <StyledButtons texto="GOOGLE" onclick={() => {HandleGoogleSignup()}}/>
-      </form>
+        <StyledButtons texto="ENTRAR"/>\
     </div>
   );
 }
