@@ -2,12 +2,26 @@
 import LoggedInGuard from "@/app/( hooks )/loggedinguard"
 import { getAuth } from "firebase/auth"
 import {auth} from '@/app/( firebase )/firebase'
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function Dashboard(){
+    const router = useRouter();
+
+  // Get the current user
+
+  // Check if the user is logged in
+  useEffect(() => {
+    if (!auth.currentUser) {
+      router.push("/login");
+    }
+  }, [auth.currentUser]);
+
     return(
         <div className="flex h-screen justify-center items-center">
-            
+            <LoggedInGuard>
                 <h1 className="text-center">Welcome to the dashboard, <span className="font-semibold">{auth.currentUser?.displayName}</span></h1>
+            </LoggedInGuard>
         </div>
     )
 }
