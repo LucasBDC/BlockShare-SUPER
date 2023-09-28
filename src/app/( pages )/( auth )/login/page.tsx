@@ -2,7 +2,7 @@
 
 // Import dependencies
 import React, { useState } from "react";
-import {auth, app, provider} from '@/app/( firebase )/firebase'
+import {auth, provider} from '@/app/( firebase )/firebase'
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
@@ -52,23 +52,22 @@ export default function Login() {
   // Function to handle sign in
   function handleSignIn() {
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then((userCredential : any) => {
       // Signed in 
       const user = userCredential.user;
       router.push('/dashboard')
       // ...
     })
-    .catch((error) => {
+    .catch((error : any) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert('aaa')
     });
   }
     
-
   // Render the component
   return (
-    <div className="h-screen flex justify-center items-center ">
+    <div className="h-screen flex justify-center items-center flex-col ">
       <form method="POST" onSubmit={handleSignIn}>
         <StyledInputs
           type="email"
