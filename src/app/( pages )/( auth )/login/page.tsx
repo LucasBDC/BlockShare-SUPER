@@ -80,9 +80,9 @@ export default function Login() {
           <StyledButtons texto="ENTRAR"/>
           
         </form>
-        {/* <form onSubmit={HandleGoogleSignup} method="post"> */}
-          <StyledButtons texto="GOOGLE" onclick={() => HandleGoogleSignup()}/>
-        {/* </form> */}
+        <form onSubmit={HandleGoogleSignup} method="post">
+          <StyledButtons texto="GOOGLE"/>
+        </form>
     </div>
   );
 }
