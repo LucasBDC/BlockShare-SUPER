@@ -69,7 +69,7 @@ export default function Login() {
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center ">
-      <form method="POST">
+      <form method="POST" onSubmit={handleSignIn}>
         <StyledInputs
           type="email"
           placeholder="E-Mail"  
@@ -82,8 +82,10 @@ export default function Login() {
           value={password}
           onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
         />
-        <StyledButtons texto="ENTRAR" onclick={() => {handleSignIn()}}/>
-        <StyledButtons texto="google" onclick={() => {HandleGoogleSignup()}}/>
+        <StyledButtons texto="ENTRAR"/>
+      </form>
+      <form method="post" onSubmit={HandleGoogleSignup}>
+        <StyledButtons texto="google"/>
       </form>
     </div>
   );
