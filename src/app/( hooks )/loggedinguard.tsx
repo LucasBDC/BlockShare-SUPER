@@ -14,6 +14,6 @@ export default function LoggedInGuard({ children }: { children: React.ReactNode 
   }
 
   return(
-    <div>children</div>
+    <div>{children}</div>
   )
 }
