@@ -1,20 +1,22 @@
-
+'use client'
 // Import dependencies
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { auth } from '@/app/( firebase )/firebase';
 
 // Function component
-export default function LoggedInGuard({ children }: { children: React.ReactNode }): React.ReactElement {
+const LoggedInGuard = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   // Router
   const router = useRouter();
 
   // Check if the user is logged in
-  if(!auth.currentUser){
-    router.push('/login')
+  if (!auth.currentUser) {
+    router.push("/login");
   }
 
-  return(
+  return (
     <div>{children}</div>
-  )
-}
+  );
+};
+
+export default LoggedInGuard;
