@@ -2,8 +2,11 @@
 import LoggedInGuard from "@/app/( hooks )/loggedinguard"
 import { getAuth } from "firebase/auth"
 import {auth} from '@/app/( firebase )/firebase'
+import router from "next/router";
 
 export default function Dashboard(){
+    const location = router.pathname;
+
     return(
         <div>
             <LoggedInGuard>
