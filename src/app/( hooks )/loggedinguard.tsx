@@ -14,7 +14,7 @@ useEffect(() =>{
   if(!auth.currentUser){
     router.push('/login')
    } 
-}, [auth.currentUser])
+}, )
 return(
   <div>{children}</div>
 )
