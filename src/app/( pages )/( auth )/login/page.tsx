@@ -50,17 +50,19 @@ export default function Login() {
   const router = useRouter();
 
   // Function to handle sign in
-  async function handleSignIn() {
-        if (typeof window !== 'undefined') {
-          // Sign in with Firebase Auth
-          signInWithEmailAndPassword(auth, email, password);
-    
-          // Redirect to the home page
-          router.push("/dashboard");
-        } else {
-            console.log('error')
-          // Do something else if the `window` object is not defined
-        }
+  function handleSignIn() {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      router.push('/dashboard')
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert('aaa')
+    });
   }
     
 
