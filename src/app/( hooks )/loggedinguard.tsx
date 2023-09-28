@@ -11,12 +11,9 @@ export default function LoggedInGuard({ children }: { children: React.ReactNode 
   // Check if the user is logged in
   if(!auth.currentUser){
     router.push('/login')
-    return(<div></div>)
-    
   }
-  else{
     return(
       <div>{children}</div>
     )
-  }
+  
 }
