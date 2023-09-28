@@ -1,7 +1,7 @@
 // Import dependencies
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from '@/app/( firebase )/firebase';
+import { auth } from "@/app/( firebase )/firebase";
 
 // Function component
 export default function LoggedInGuard({ children }: { children: React.ReactNode }): React.ReactElement {
