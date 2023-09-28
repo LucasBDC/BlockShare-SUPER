@@ -1,3 +1,4 @@
+'use client'
 // Import dependencies
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
