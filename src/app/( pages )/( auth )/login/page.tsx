@@ -62,6 +62,7 @@ export default function Login() {
   // Render the component
   return (
     <div className="h-screen flex justify-center items-center flex-col">
+        <div className="flex flex-col">
         <form onSubmit={handleSignIn} method="post">
           <StyledInputs
             type="email"
@@ -78,11 +79,11 @@ export default function Login() {
             onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
           />
           <StyledButtons texto="ENTRAR"/>
-          
         </form>
         <form onSubmit={HandleGoogleSignup} method="post">
           <StyledButtons texto="GOOGLE"/>
         </form>
+        </div>
     </div>
   );
 }
