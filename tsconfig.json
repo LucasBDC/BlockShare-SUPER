@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/( pages )/( auth )/login/page.tsx", "src/app/( hooks )/handlegooglesignup.ts", "src/app/( hooks )/loggedinguard.tsx", "src/app/( pages )/searchArchive/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/( pages )/( auth )/login/page.tsx", "src/app/( hooks )/handlegooglesignup.ts", "src/app/( hooks )/loggedinguard.tsx", "src/app/( pages )/searchArchive/page.js", "src/app/( pages )/uploadshit/page.tsx"],
   "exclude": ["node_modules"]
 }

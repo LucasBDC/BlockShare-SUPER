@@ -5,6 +5,7 @@ import {auth} from '@/app/( firebase )/firebase'
 
 import StyledButtons from "@/components/styledbuttons"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export default function Dashboard(){
     const router =  useRouter();
@@ -16,6 +17,7 @@ export default function Dashboard(){
             <LoggedInGuard>
             <h1 className="text-center">Welcome to the dashboard, <span className="font-semibold">{auth.currentUser?.displayName}</span></h1>
             <StyledButtons texto="LogOut" onclick={() => handleLogout()}/>
+            <Link href='/uploadshit'>Upload</Link>
             </LoggedInGuard>
         </div>
     )
