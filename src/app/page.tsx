@@ -1,6 +1,7 @@
 // Libs
 import Image from "next/image"
 import Link from "next/link"
+import Footer from "@/components/Footer"
 
 // Imagens
 import Logo from '@/assets/logo.svg'
@@ -21,7 +22,7 @@ import MenuBtn from "@/components/menubtn"
 import Card from '@/components/card'
 export default function Home() {
   return (
-    <main>
+    <main className="w-screen overflow-hidden">
       <header className="h-screen w-screen" style={{background: 'linear-gradient(293deg, rgba(233, 172, 255, 0.30) 0%, rgba(205, 188, 255, 0.00) 50%, rgba(228, 153, 255, 0.30) 100%);'}}>
         <nav className="flex justify-around py-10 items-center">
           <Link href='/' className="flex items-center gap-4 font-semibold text-xl tracking-[0.35em] animate-pulse">
@@ -49,7 +50,7 @@ export default function Home() {
           <Link href='/registro'><MenuBtn nome='Cadastrar'/></Link>
           </div>
         </nav>
-        <div className="flex justify-between max-md:pl-5 max-lg:pl-5 pl-24 overflow-hidden flex-wrap max-sm:justify-center">
+        <div className="flex justify-between max-md:pl-5 max-lg:pl-5 pl-24 overflow-hidden flex-wrap max-sm:justify-center w-screen">
             <div className="self-center flex flex-col mt-16 z-10">
             <p className="font-semibold text-xl max-sm:text-sm">Tópico</p>
             <p className  ="text-[5rem] font-semibold leading-[4rem] uppercase max-sm:text-[3rem] max-lg:text-[3rem]">Landing<br />Page</p>
@@ -59,7 +60,7 @@ export default function Home() {
             <Image
                 src={Img1}
                 alt="img"
-                className="w-[30rem] z-10 max-sm:hidden max-md:w-[20rem] max-md:h-[24rem]"
+                className="w-[30rem] z-10 max-sm:hidden max-md:w-[20rem] max-md:h-[24rem] "
             />
             <Image src={Poly} alt="polygon" className="absolute left-[60%] w-[10%]  bottom-[15%] max-md:hidden"/>
             <Image src={Poly} alt="polygon" className="absolute left-[65%] w-[22%] bottom-[50%%] max-md:hidden"/>
@@ -100,30 +101,7 @@ export default function Home() {
         <Card photo={Photo3} name="Lia Melos" comment="A interface intuitiva e as ferramentas avançadas disponíveis tornaram minha jornada mais acessível e gratificante. Além disso, a comunidade ativa de usuários compartilhou valiosos insights e conhecimentos."/>
       </div>
     </div>
-    <footer className="h-[50vh] bg-black text-white flex p-2 justify-around flex-wrap">
-          <Link href='/' className="flex items-center gap-4 font-semibold text-xl tracking-[0.35em] animate-pulse">
-            <Image
-              src={Logo}
-              alt="Logo"
-              className="w-14 min-w-[3rem]"
-            />
-            <p className="uppercase  max-lg:hidden">blockshare</p>
-          </Link>
-          <div className="flex items-baseline gap-8 self-center align-top">
-          <div className="flex flex-col self-center">
-            <p className="font-bold text-sm">Sobre</p>
-            <p className="text-sm font-medium text-zinc-600 w-52">A empresa é um projeto realizado na Task WP3-Software realizado no projeto SUPER</p>
-          </div>
-          <div className="flex flex-col self-center">
-            <p className="font-bold text-sm">Ajuda</p>
-            <p className="text-sm font-medium text-zinc-600 w-56">Uma colaboração com Glauber Patrik bolsista da Task WP2 - Iniciação Ciêntifica</p>
-          </div>
-          <div className="flex flex-col self-center">
-            <p className="font-bold text-sm">Projeto SUPER</p>
-            <p className="text-sm font-medium text-zinc-600 w-56">Realizado em parceria com a Universidade Federal do Amazonas UFAM com a FAEPI...</p>
-          </div>
-          </div>
-    </footer>
+    <Footer/>
     </main>
   )
 }
