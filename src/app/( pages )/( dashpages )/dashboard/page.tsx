@@ -39,6 +39,13 @@ export default function Dashboard(){
                 </div>
             </div>
             <Footer></Footer>
+        <div className="flex h-screen justify-center items-center">
+            <LoggedInGuard>
+            <h1 className="text-center">Welcome to the dashboard, <span className="font-semibold">{auth.currentUser?.displayName}</span></h1>
+            <StyledButtons texto="LogOut" onclick={() => handleLogout()}/>
+            <Link href='/uploadshit'>Upload</Link>
+            </LoggedInGuard>
+        </div>
         </div>
     )
 }
