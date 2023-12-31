@@ -48,7 +48,8 @@ const Display = ({ contract, account }) => {
       <input
         type="text"
         placeholder="Enter Address"
-        className="border-slate-500 border-2 text-slate-400 rounded-md py-6 w-[60%] h-[55px] focus:border-slate-200 px-4 address"
+        className="border-slate-500 border-2 text-slate-400 rounded-md py-6 w-[60%] h-[55px] focus:border-slate-200 px-4 
+        address"
         style={{background: 'linear-gradient(0deg, rgba(88, 88, 88, 0.15) 0%, rgba(88, 88, 88, 0.15) 100%), rgba(208, 208, 208, 0.05)'}}
       ></input>
       <button className="font-medium text-xl border-2 border-purple-800 px-8 py-2 rounded-tl-xl rounded-br-xl hover:bg-purple-800 ease-in-out duration-150 hover:font-semibold mt-10 self-center" onClick={getdata}>
