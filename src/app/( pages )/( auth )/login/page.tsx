@@ -20,42 +20,43 @@ import Google from '@/assets/google.png'
 import Logo from '@/assets/logo.svg'
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const router = useRouter();
-  
-  const handleGoogleSignup = () => {
-    try {
-      signInWithPopup(auth, provider)
-        .then(() => {
-          router.push('/dashboard')
-        })
-        .catch((error) => {
-          console.error("Error in Google sign up: ", error);
-          alert(`Google sign up failed due to an error: ${error.message}`);
-        });
-    } catch (error : any) {
-      console.error("Error in Google sign up: ", error);
-      alert(`Google sign up failed due to an error: ${error.message}`);
-    }
+  const [userEmail, setUserEmail] = useState('');
+const [userPassword, setUserPassword] = useState('');
+const pageRouter = useRouter();
+
+const handleGoogleUserSignup = () => {
+  try {
+    signInWithPopup(auth, provider)
+      .then(() => {
+        pageRouter.push('/dashboard')
+      })
+      .catch((error) => {
+        console.error("Error in Google user sign up: ", error);
+        alert(`Google user sign up failed due to an error: ${error.message}`);
+      });
+  } catch (error : any) {
+    console.error("Error in Google user sign up: ", error);
+    alert(`Google user sign up failed due to an error: ${error.message}`);
   }
-  
-  const handleSignIn = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-    try {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          router.push('/dashboard')
-        })
-        .catch((error) => {
-          console.error("Error in sign in: ", error);
-          alert(`Sign in failed due to an error: ${error.message}`);
-        });
-    } catch (error : any) {
-      console.error("Error in sign in: ", error);
-      alert(`Sign in failed due to an error: ${error.message}`);
-    }
+}
+
+const handleUserSignIn = (event: { preventDefault: () => void; }) => {
+  event.preventDefault();
+  try {
+    signInWithEmailAndPassword(auth, userEmail, userPassword)
+      .then(() => {
+        pageRouter.push('/dashboard')
+      })
+      .catch((error) => {
+        console.error("Error in user sign in: ", error);
+        alert(`User sign in failed due to an error: ${error.message}`);
+      });
+  } catch (error : any) {
+    console.error("Error in user sign in: ", error);
+    alert(`User sign in failed due to an error: ${error.message}`);
   }
+}
+
   
 
   return (
@@ -68,24 +69,24 @@ export default function Login() {
           </div>
         </Link>
         <hr className="border border-slate-600 mb-3" />
-        <form onSubmit={handleSignIn} method="post" className="flex flex-col gap-4">
+        <form onSubmit={handleUserSignIn} method="post" className="flex flex-col gap-4">
           <StyledInputs
             type="email"
             placeholder="E-Mail"
-            value={email}
+            value={userEmail}
             name="email"
-            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setUserEmail(e.target.value)}
           />
           <StyledInputs
             type="password"
             name="password"
             placeholder="Senha"
-            value={password}
-            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
+            value={userPassword}
+            onchange={(e: { target: { value: React.SetStateAction<string>; }; }) => setUserPassword(e.target.value)}
           />
           <StyledButtons texto="ENTRAR" />
         </form>
-        <form onSubmit={handleGoogleSignup} method="post">
+        <form onSubmit={handleGoogleUserSignup} method="post">
           <button className="flex  items-center justify-center w-[100%] gap-2 bg-zinc-800 py-3 rounded-lg cursor-pointer text-slate-300 hover:bg-zinc-700 duration-150 active:bg-zinc-900">
             <p className="text-md font-medium ">Entrar com Google</p>
             <Image src={Google} alt='google' className="w-7" />
