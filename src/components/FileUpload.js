@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import "./FileUpload.css";
+import {db, auth} from '@/app/( firebase )/firebase'
+import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore"
+import { update } from "firebase/database";
 
 const FileUpload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
@@ -30,12 +33,22 @@ const FileUpload = ({ contract, account, provider }) => {
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
         contract.add(account, ImgHash);
         alert("O arquivo foi enviado com sucesso");
+        const user = auth.currentUser
+        const ticketRef = collection(db, "Log");
+        const ticketDoc = doc(ticketRef);
+        await setDoc(ticketDoc, {
+          ticketId: ticketDoc.id,
+          userId: user.uid,
+          imgHash : ImgHash
+        });
+
       } catch (e) {
         alert("Não foi possível enviar o arquivo!");
       } finally {
         setFileName("Não selecionado");
         setFile(null);
       }
+      
     }
   };
 

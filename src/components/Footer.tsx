@@ -13,7 +13,7 @@ export default function Footer(){
             />
             <p className="uppercase  max-lg:hidden">blockshare</p>
           </Link>
-          <div className="flex items-baseline gap-8 self-center align-top">
+          <div className="flex items-baseline gap-8 self-center align-top flex-wrap">
           <div className="flex flex-col self-center">
             <p className="font-bold text-sm">Sobre</p>
             <p className="text-sm font-medium text-zinc-600 w-52">A empresa é um projeto realizado na Task WP3-Software realizado no projeto SUPER</p>
