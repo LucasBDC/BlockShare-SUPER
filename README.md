@@ -44,8 +44,7 @@
 
 <hr>
 <br>
-```
-try {
+``` try {
         const fileResponse = await uploadFileToIPFS(selectedFile);
         const fileHashURL = `https://gateway.pinata.cloud/ipfs/${fileResponse.data.IpfsHash}`;
         contract.add(account, fileHashURL);
@@ -55,5 +54,5 @@ try {
       } finally {
         setSelectedFileName("Não selecionado");
         setSelectedFile(null);
-      }
-```
+      }```
+
