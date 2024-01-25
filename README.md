@@ -1,1 +1,5 @@
-O Blockshare é um app web feito em NextJS e utilizando IFPS como API para conexão com a blockchain e decentralização do método de segurança. O objetivo é entregar o projeto funcional completo até 1 de novembro para compleição em tempo hábil de apresentar na SUPER TECH WEEK. O projeto deve estar funcional e apresentável. SE POSSÍVEL, a apresentação
+<h1>Problema</h1>
+Quando se entrava em alguma página e voltava para a landing page a estilização do degradê falhava.
+
+<h2>Solução</h2>
+Tal problema não é mais encontrado no site, não sabemos o que fizemos para ele sumir, tendo que investigar mais a fundo tal situação
