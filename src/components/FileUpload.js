@@ -10,32 +10,36 @@ const FileUploader = ({ contract, account, provider }) => {
   const [selectedFileName, setSelectedFileName] = useState("Não selecionado");
 
   const uploadFileToIPFS = async (selectedFile) => {
-    const fileData = new FormData();
-    fileData.append("selectedFile", selectedFile);
+    try {
+      const fileData = new FormData();
+      fileData.append("file", selectedFile);
 
-    return await axios({
-      method: "post",
-      url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-      data: fileData,
-      headers: {
-        pinata_api_key: `079b241cbe4ba5e69735`,
-        pinata_secret_api_key: `946949cd4b9f2d55dfc5b1bf5bdfd9637bbd242b2f34db9b4e6738595285d827`,
-        "Content-Type": "multipart/form-data",
-      },
-    });
+      return await axios({
+        method: "post",
+        url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        data: fileData,
+        headers: {
+          pinata_api_key: `079b241cbe4ba5e69735`,
+          pinata_secret_api_key: `946949cd4b9f2d55dfc5b1bf5bdfd9637bbd242b2f34db9b4e6738595285d827`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    } catch (error) {
+      console.error("Error uploading file to IPFS: ", error);
+      throw error;
+    }
   };
-  
+
   const handleFileSubmission = async (event) => {
     event.preventDefault();
-
     if (selectedFile) {
       try {
         const fileResponse = await uploadFileToIPFS(selectedFile);
         const fileHashURL = `https://gateway.pinata.cloud/ipfs/${fileResponse.data.IpfsHash}`;
         contract.add(account, fileHashURL);
         alert("O arquivo foi enviado com sucesso");
-        const user = auth.currentUser
         const logCollectionRef = collection(db, "Log");
+        const user = auth.currentUser
         const logDocRef = doc(logCollectionRef);
         await setDoc(logDocRef, {
           ticketId: logDocRef.id,
@@ -45,6 +49,7 @@ const FileUploader = ({ contract, account, provider }) => {
 
       } catch (error) {
         alert("Não foi possível enviar o arquivo!");
+        console.error("Error in file submission: ", error);
       } finally {
         setSelectedFileName("Não selecionado");
         setSelectedFile(null);
@@ -54,14 +59,18 @@ const FileUploader = ({ contract, account, provider }) => {
   };
 
   const handleFileRetrieval = (event) => {
-    const fileData = event.target.files[0];
-    const fileReader = new window.FileReader();
-    fileReader.readAsArrayBuffer(fileData);
-    fileReader.onloadend = () => {
-      setSelectedFile(fileData);
-      setSelectedFileName(fileData.name);
-    };
-    event.preventDefault();
+    try {
+      const fileData = event.target.files[0];
+      const fileReader = new window.FileReader();
+      fileReader.readAsArrayBuffer(fileData);
+      fileReader.onloadend = () => {
+        setSelectedFile(fileData);
+        setSelectedFileName(fileData.name);
+      };
+      event.preventDefault();
+    } catch (error) {
+      console.error("Error in file retrieval: ", error);
+    }
   };
 
   return (

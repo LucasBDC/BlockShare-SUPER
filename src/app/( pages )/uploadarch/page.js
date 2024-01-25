@@ -14,19 +14,29 @@ const App = () => {
 
   useEffect(() => {
     const initializeProvider = async () => {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      window.ethereum.on("chainChanged", () => window.location.reload());
-      window.ethereum.on("accountsChanged", () => window.location.reload());
-      await provider.send("eth_requestAccounts", []);
-      return provider;
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        window.ethereum.on("chainChanged", () => window.location.reload());
+        window.ethereum.on("accountsChanged", () => window.location.reload());
+        await provider.send("eth_requestAccounts", []);
+        return provider;
+      } catch (error) {
+        console.error("Error initializing provider: ", error);
+        alert(`Failed to initialize provider due to an error: ${error.message}`);
+      }
     };
 
     const initializeContract = async (provider) => {
-      const signer = provider.getSigner();
-      const address = await signer.getAddress();
-      const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-      const contract = new ethers.Contract(contractAddress, Upload.abi, signer);
-      return { contract, address };
+      try {
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+        const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const contract = new ethers.Contract(contractAddress, Upload.abi, signer);
+        return { contract, address };
+      } catch (error) {
+        console.error("Error initializing contract: ", error);
+        alert(`Failed to initialize contract due to an error: ${error.message}`);
+      }
     };
 
     if (window.ethereum) {
@@ -35,7 +45,13 @@ const App = () => {
         initializeContract(provider).then(({ contract, address }) => {
           setContract(contract);
           setAccount(address);
+        }).catch((error) => {
+          console.error("Error in contract initialization: ", error);
+          alert(`Contract initialization failed due to an error: ${error.message}`);
         });
+      }).catch((error) => {
+        console.error("Error in provider initialization: ", error);
+        alert(`Provider initialization failed due to an error: ${error.message}`);
       });
     } else {
       console.error("Metamask não está instalado! Instale o Metamask para poder prosseguir");

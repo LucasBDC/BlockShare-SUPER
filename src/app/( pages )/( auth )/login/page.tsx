@@ -23,27 +23,40 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-
+  
   const handleGoogleSignup = () => {
-    signInWithPopup(auth, provider)
-      .then(() => {
-        router.push('/dashboard')
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
+    try {
+      signInWithPopup(auth, provider)
+        .then(() => {
+          router.push('/dashboard')
+        })
+        .catch((error) => {
+          console.error("Error in Google sign up: ", error);
+          alert(`Google sign up failed due to an error: ${error.message}`);
+        });
+    } catch (error : any) {
+      console.error("Error in Google sign up: ", error);
+      alert(`Google sign up failed due to an error: ${error.message}`);
+    }
   }
-
+  
   const handleSignIn = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        router.push('/dashboard')
-      })
-      .catch((error) => {
-        alert(error.message)
-      });
+    try {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          router.push('/dashboard')
+        })
+        .catch((error) => {
+          console.error("Error in sign in: ", error);
+          alert(`Sign in failed due to an error: ${error.message}`);
+        });
+    } catch (error : any) {
+      console.error("Error in sign in: ", error);
+      alert(`Sign in failed due to an error: ${error.message}`);
+    }
   }
+  
 
   return (
     <Printela>
