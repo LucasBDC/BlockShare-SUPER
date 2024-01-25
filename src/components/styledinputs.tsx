@@ -9,7 +9,7 @@ export default function StyledInputs(props : any, onChange : any){
                 type={props.type} 
                 placeholder={props.placeholder} 
                 value={props.value}
-                className="border-slate-500 border-2 text-slate-400 rounded-md py-2 w-[100%] h-[55px] focus:border-slate-200 px-4"
+                className="border-slate-700 border-2 text-slate-900 rounded-md py-2 w-[100%] h-[55px] focus:border-slate-200 px-4"
                 style={{background: 'linear-gradient(0deg, rgba(88, 88, 88, 0.15) 0%, rgba(88, 88, 88, 0.15) 100%), rgba(208, 208, 208, 0.05)'}}
                 onChange={props.onchange}
                 name={props.name}

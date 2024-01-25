@@ -23,6 +23,7 @@ export default function SignIn() {
   const [userEmail, setUserEmail] = useState('');
 const [userPassword, setUserPassword] = useState('');
 const pageRouter = useRouter();
+alert(process.env.NEXT_PUBLIC_API_KEY)
 
 const handleGoogleUserSignup = () => {
   try {
@@ -94,7 +95,7 @@ const handleUserSignIn = (event: { preventDefault: () => void; }) => {
         </form>
         <Link href='/registro'>
           <div className="flex gap-1 justify-end items-center group w-[100%]">
-            <p className="text-slate-400 text-sm group-hover:text-slate-200">Não tem conta?</p>
+            <p className="text-slate-800 text-sm group-hover:text-slate-900">Não tem conta?</p>
             <span className="font-semibold text-purple-600 text- group-hover:text-purple-500 group-active:text-purple-800">Crie</span>
           </div>
         </Link>

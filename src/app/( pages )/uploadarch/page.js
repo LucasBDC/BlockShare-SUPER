@@ -64,7 +64,7 @@ const App = () => {
     <LoggedInGuard>
     <div className="App flex flex-col gap-4 items-center justify-center backgroundera min-h-screen">
       <Header/>
-      <p className="text-lg font-medium" style={{ color: "white" }}>
+      <p className="text-lg font-medium text-black">
         Conta : {account ? account : "Nenhuma conta conectada"}
       </p>
       <FileUpload account={account} provider={provider} contract={contract} />

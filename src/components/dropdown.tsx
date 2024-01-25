@@ -10,7 +10,7 @@ export default function Dropdown(props : any){
             <Image
                 src={ArrowDown}
                 alt="VerMais"
-                className="w-5"
+                className="w-5 brightness-0"
             />
             </div>
             <ul className="list-none flex flex-col items-center">

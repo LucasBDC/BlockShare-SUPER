@@ -5,6 +5,7 @@ module.exports = nextConfig
 module.exports = {
   env: {
     customKey: 'my-value',
+    API_KEY: 'AIzaSyB-oa-bU7xTtT8HJSh8xIf2oIPQI0TOjF8'
   },
 }
 module.exports = {

@@ -12,7 +12,7 @@ export default function LoggedInGuard({ children }: { children: React.ReactNode 
   // Verificar se o usuário está logado
 useEffect(() =>{
   if(!auth.currentUser){
-    roteadorPagina.push('/login')
+    roteadorPagina.push('/signin')
    } 
 }, )
 return(

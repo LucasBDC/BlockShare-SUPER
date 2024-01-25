@@ -85,8 +85,8 @@ export default function Home() {
       <div className="flex flex-col w-[30rem]  gap-3 max-md:mr-0 max-md:w-[20rem] max-sm:w-[15rem]">
         <p className="uppercase text-end  w-[100%] font-semibold">Tópico</p>
         <p className="text-[4rem] leading-[4rem] uppercase text-end  font-semibold max-sm:text-[3rem]">Proteja seus dados online</p>
-        <p className="text-end text-sm text-[#9E9D9E] font-medium">Um banco de dados blockchain armazena informações em blocos interligados em uma cadeia. Os dados são considerados cronologicamente consistentes porque não é possível excluir nem modificar a cadeia sem o consenso da rede.</p>
-        <Link href='/' className="self-end flex items-center gap-3 group"><Image src={RightPoint} className="w-3 h-3  opacity-0 group-hover:opacity-100 group-hover:translate-x-2 duration-300 ease-out " alt="rightpoint"/><p className="text-end text-white font-medium">Leia mais sobre dados.</p></Link>
+        <p className="text-end text-sm text-[#2f2f2f] font-medium">Um banco de dados blockchain armazena informações em blocos interligados em uma cadeia. Os dados são considerados cronologicamente consistentes porque não é possível excluir nem modificar a cadeia sem o consenso da rede.</p>
+        <Link href='/' className="self-end flex items-center gap-3 group"><Image src={RightPoint} className="w-3 h-3 brightness-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 duration-300 ease-out " alt="rightpoint"/><p className="text-end text-black font-medium">Leia mais sobre dados.</p></Link>
         
       </div>
       

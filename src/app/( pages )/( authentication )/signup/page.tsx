@@ -123,13 +123,13 @@ return (
           setIdadeUsuario(e.target.value as number);
         }}
       />
-      <select value={generoUsuario} onChange={(e) => setGeneroUsuario(e.target.value)} className="text-slate-400 border-slate-500 border-2  w-[100%] py-3 px-2 rounded-bl-md rounded-br-md" style={{background: 'linear-gradient(0deg, rgba(88, 88, 88, 0.15) 0%, rgba(88, 88, 88, 0.15) 100%), rgba(208, 208, 208, 0.05)'}}>
+      <select value={generoUsuario} onChange={(e) => setGeneroUsuario(e.target.value)} className="text-slate-900 border-slate-500 border-2  w-[100%] py-3 px-2 rounded-bl-md rounded-br-md" style={{background: 'linear-gradient(0deg, rgba(88, 88, 88, 0.15) 0%, rgba(88, 88, 88, 0.15) 100%), rgba(208, 208, 208, 0.05)'}}>
         <option value="">Selecione o gênero</option>
         <option value="male">Masculino</option>
         <option value="female">Feminino</option>
       </select>
       <StyledButtons texto="Cadastrar"/>
-        <Link href='/login' className="flex gap-2 self-center group items-center"><p className="text-slate-400 text-sm group-hover:text-slate-200">Já tem uma conta?</p><span className="font-semibold text-purple-600 text- group-hover:text-purple-500 group-active:text-purple-800">Entre</span></Link>
+        <Link href='/login' className="flex gap-2 self-center group items-center"><p className="text-slate-700 text-sm group-hover:text-slate-900">Já tem uma conta?</p><span className="font-semibold text-purple-600 text- group-hover:text-purple-500 group-active:text-purple-800">Entre</span></Link>
         </form>
     </Printela>
   );

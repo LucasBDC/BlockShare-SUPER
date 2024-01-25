@@ -76,7 +76,7 @@ const FileUploader = ({ contract, account, provider }) => {
   return (
     <div className="top">
       <form className="form" onSubmit={handleFileSubmission}>
-        <label htmlFor="file-upload" className="choose duration-300 hover:bg-purple-700">
+        <label htmlFor="file-upload" className="choose duration-300 hover:bg-purple-700 text-black">
           Escolher arquivo
         </label>
         <input
@@ -84,10 +84,11 @@ const FileUploader = ({ contract, account, provider }) => {
           type="file"
           id="file-upload"
           name="data"
+          className="text-black"
           onChange={handleFileRetrieval}
         />
         <span className="textArea">Arquivo: {selectedFileName.substring(0, 15)}...</span>
-        <button type="submit" className="upload cursor-pointer hover:bg-green-400 duration-200" disabled={!selectedFile}>
+        <button type="submit" className="upload cursor-pointer hover:bg-green-400 duration-200 text-black" disabled={!selectedFile}>
           Enviar arquivo
         </button>
       </form>
