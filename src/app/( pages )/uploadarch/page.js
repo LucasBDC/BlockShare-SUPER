@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import FileUpload from "@/components/FileUpload";
 import Display from "@/components/Display";
 import Header from "@/components/header";
+import LoggedInGuard from '../../( hooks )/loggedinguard'
 import './App.css'
 require('dotenv').config();
 
@@ -60,6 +61,7 @@ const App = () => {
   }, []);
 
   return (
+    <LoggedInGuard>
     <div className="App flex flex-col gap-4 items-center justify-center backgroundera min-h-screen">
       <Header/>
       <p className="text-lg font-medium" style={{ color: "white" }}>
@@ -68,6 +70,7 @@ const App = () => {
       <FileUpload account={account} provider={provider} contract={contract} />
       <Display contract={contract} account={account} />
     </div>
+    </LoggedInGuard>
   );
 };
 

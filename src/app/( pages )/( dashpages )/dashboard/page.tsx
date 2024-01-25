@@ -22,6 +22,7 @@ export default function Dashboard(){
         router.push('/login')
     }
     return(
+        <LoggedInGuard>
         <div className="w-screen flex flex-col gap-4 items-center justify-center backgroundera">
             <div className="h-screen w-screen flex items-center flex-col " style={{background: 'radial-gradient(184.84% 125.71% at 10.4% 16.76%, #C641DE 15.1%, #3722B2 81.25%)'}}>
                 <div className="flex w-screen px-10 pt-10 justify-around">
@@ -50,5 +51,6 @@ export default function Dashboard(){
             </div>
             <Footer></Footer>
         </div>
+        </LoggedInGuard>
     )
 }

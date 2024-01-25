@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/app/( firebase )/firebase";
 
 // Componente de função
-export default function VerificadorUsuarioLogado({ children }: { children: React.ReactNode }): React.ReactElement {
+export default function LoggedInGuard({ children }: { children: React.ReactNode }): React.ReactElement {
   // Roteador
   const roteadorPagina = useRouter();
 
