@@ -13,7 +13,7 @@ export default function Dropdown(props : any){
                 className="w-5"
             />
             </div>
-            <ul className="list-none flex flex-col items-center">
+            <ul className="list-none flex flex-col items-center text-xl">
                 <li className="leading-10 opacity-0 group-hover:opacity-100 absolute group-hover:translate-y-4 duration-300 ease-in-out text-sm">{props.children}</li>
             </ul>
         </div>
