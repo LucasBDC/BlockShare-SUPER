@@ -41,3 +41,20 @@
           imgHash : fileHashURL
         });
 ```
+
+<hr>
+<br>
+```
+try {
+        const fileResponse = await uploadFileToIPFS(selectedFile);
+        const fileHashURL = `https://gateway.pinata.cloud/ipfs/${fileResponse.data.IpfsHash}`;
+        contract.add(account, fileHashURL);
+        alert("O arquivo foi enviado com sucesso");
+
+      } catch (error) {
+        alert("Não foi possível enviar o arquivo!");
+      } finally {
+        setSelectedFileName("Não selecionado");
+        setSelectedFile(null);
+      }
+  ```
