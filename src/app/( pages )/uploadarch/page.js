@@ -6,6 +6,7 @@ import FileUpload from "@/components/FileUpload";
 import Display from "@/components/Display";
 import Header from "@/components/header";
 import './App.css'
+require('dotenv').config();
 
 const App = () => {
   const [account, setAccount] = useState("");
@@ -30,7 +31,7 @@ const App = () => {
       try {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
-        const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const contractAddress = process.env.CONTRACT_ADDRESS;
         const contract = new ethers.Contract(contractAddress, Upload.abi, signer);
         return { contract, address };
       } catch (error) {
