@@ -19,7 +19,7 @@ import { auth, provider } from '@/app/( firebase )/firebase'
 import Google from '@/assets/google.png'
 import Logo from '@/assets/logo.svg'
 
-export default function Login() {
+export default function SignIn() {
   const [userEmail, setUserEmail] = useState('');
 const [userPassword, setUserPassword] = useState('');
 const pageRouter = useRouter();

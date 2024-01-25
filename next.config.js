@@ -2,7 +2,11 @@
 const nextConfig = {}
 
 module.exports = nextConfig
-
+module.exports = {
+  env: {
+    customKey: 'my-value',
+  },
+}
 module.exports = {
   images: {
     formats: ['image/avif', 'image/webp'],

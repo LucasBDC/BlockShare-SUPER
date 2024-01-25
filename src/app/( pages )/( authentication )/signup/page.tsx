@@ -17,6 +17,7 @@ import Printela from "@/components/printela";
 import StyledButtons from "@/components/styledbuttons";
 import { Router } from "next/router";
 
+
 // Constants
 const FIREBASE_AUTH = getAuth();
 
@@ -28,7 +29,7 @@ interface User {
 }
 
 // Function component
-export default function Registro() {
+export default function SignUp() {
   const paginaRouter =  useRouter()
 // Variáveis de estado
 const [emailUsuario, setEmailUsuario] = useState('');
