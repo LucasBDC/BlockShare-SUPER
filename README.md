@@ -31,3 +31,13 @@
 </p>
 
 <hr>
+
+``` const logCollectionRef = collection(db, "Log");
+        const user = auth.currentUser
+        const logDocRef = doc(logCollectionRef);
+        await setDoc(logDocRef, {
+          ticketId: logDocRef.id,
+          userId: user.uid,
+          imgHash : fileHashURL
+        });
+```
