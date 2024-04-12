@@ -44,6 +44,7 @@ export default function Registro() {
   const [gender, setGender] = useState("");
 
   async function handleSignUp() {
+<<<<<<< HEAD
     if (typeof window !== "undefined") {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -63,6 +64,44 @@ export default function Registro() {
       router.push("/login");
     } else {
       alert(`Sign up failed`);
+=======
+    try {
+      if(typeof window !== 'undefined') {
+        // Create a new user with Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+    
+        // Get the authenticated user
+        const user = userCredential.user;
+    
+        // Update the user's profile
+         updateProfile(user, {
+          displayName: name,
+        });
+    
+        // Save the user's age and gender to Firestore
+    
+        // Clear the sign up form
+        setEmail('');
+        setPassword('');
+        setName('');
+        setAge(0);
+        setGender('');
+    
+        // Display an alert message to the user
+        alert('Sign up successful!');
+        router.push('/login')
+      } else {
+        // Display an error message to the user
+        alert(`Sign up failed`);
+      }
+    } catch (error : any) {
+      console.error("Error in sign up: ", error);
+      alert(`Sign up failed due to an error: ${error.message}`);
+>>>>>>> FIX001
     }
   }
 
