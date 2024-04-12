@@ -6,7 +6,6 @@ import FileUpload from "@/components/FileUpload";
 import Display from "@/components/Display";
 import Header from "@/components/header";
 import './App.css'
-require('dotenv').config();
 
 const App = () => {
   const [account, setAccount] = useState("");
