@@ -31,7 +31,7 @@ const App = () => {
       try {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
-        const contractAddress = process.env.CONTRACT_ADDRESS;
+        const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
         const contract = new ethers.Contract(contractAddress, Upload.abi, signer);
         return { contract, address };
       } catch (error) {
