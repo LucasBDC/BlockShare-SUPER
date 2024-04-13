@@ -7,13 +7,13 @@ import {
   signInWithPopup,
 } from "firebase/auth"
 import { SetStateAction, useState } from "react"
-import {} from "@/app/( firebase )/firebase"
+import { db } from "@/app/( firebase )/firebase"
 import { useRouter } from "next/navigation"
 import { auth, app } from "@/app/( firebase )/firebase"
 import Link from "next/link"
 import Image from "next/image"
 
-import { getFirestore, doc, setDoc } from "firebase/firestore"
+import { getFirestore, doc, setDoc, collection } from "firebase/firestore"
 
 import Logo from "@/assets/logo.svg"
 
@@ -33,6 +33,7 @@ interface User {
   gender: string
 }
 
+const usersCollectionRef = collection(db, "users")
 // Function component
 export default function Registro() {
   const paginaRouter = useRouter()
@@ -45,52 +46,36 @@ export default function Registro() {
 
   async function handleRegistroUsuario() {
     if (
-      idadeUsuario > 18 &&
+      idadeUsuario > 17 &&
       emailUsuario !== "" &&
       senhaUsuario !== "" &&
       nomeUsuario !== "" &&
       generoUsuario !== ""
     ) {
       try {
-        if (typeof window !== "undefined") {
-          // Cria um novo usuário com o Firebase Auth
-          const credencialUsuario = await createUserWithEmailAndPassword(
-            auth,
-            emailUsuario,
-            senhaUsuario
-          )
-
-          // Obtém o usuário autenticado
-          const usuario = credencialUsuario.user
-
-          // Atualiza o perfil do usuário
-          updateProfile(usuario, {
-            displayName: nomeUsuario,
-          })
-
-          // Salva a idade e o gênero do usuário no Firestore
-
-          // Limpa o formulário de registro
-          setEmailUsuario("")
-          setSenhaUsuario("")
-          setNomeUsuario("")
-          setIdadeUsuario(0)
-          setGeneroUsuario("")
-
-          // Exibe uma mensagem de alerta para o usuário
-          alert("Registro bem-sucedido!")
-          paginaRouter.push("/login")
-        } else {
-          // Exibe uma mensagem de erro para o usuário
-          alert(`Falha no registro`)
-        }
-      } catch (error: any) {
-        console.error("Erro no registro: ", error)
-        alert(`Falha no registro devido a um erro: ${error.message}`)
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          emailUsuario,
+          senhaUsuario
+        )
+        const user = userCredential.user
+        await updateProfile(user, { displayName: nomeUsuario })
+        const userDocRef = doc(usersCollectionRef, user.uid)
+        await setDoc(userDocRef, {
+          id: user.uid,
+          email: emailUsuario,
+          password: senhaUsuario,
+          name: nomeUsuario,
+          idade: idadeUsuario,
+          genero: generoUsuario,
+        })
+        alert("Cadastro feito com sucesso! Aproveite o BlockShare!")
+        paginaRouter.push("/login")
+      } catch (e: any) {
+        alert(e)
       }
     }
   }
-
   return (
     <Printela>
       <div className="border-4 border-slate-600 px-16 py-10 rounded-tl-3xl rounded-br-3xl gap-2 flex flex-col max-2xl:w-[35%] max-sm:w-[100%] max-lg:w-[70%]">
@@ -156,7 +141,12 @@ export default function Registro() {
           <option value="male">Masculino</option>
           <option value="female">Feminino</option>
         </select>
-        <StyledButtons texto="Cadastrar" onclick={handleRegistroUsuario} />
+        <StyledButtons
+          texto="Cadastrar"
+          onclick={() => {
+            handleRegistroUsuario()
+          }}
+        />
         <Link
           href="/login"
           className="flex gap-2 self-center group items-center"

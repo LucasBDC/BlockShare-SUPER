@@ -38,7 +38,7 @@ const FileUploader = ({ contract, account, provider }) => {
         const fileHashURL = `https://gateway.pinata.cloud/ipfs/${fileResponse.data.IpfsHash}`;
         contract.add(account, fileHashURL);
         alert("O arquivo foi enviado com sucesso");
-        const logCollectionRef = collection(db, "Log");
+        const logCollectionRef = collection(db, "users", auth.currentUser.uid, "files");
         const user = auth.currentUser
         const logDocRef = doc(logCollectionRef);
         await setDoc(logDocRef, {
