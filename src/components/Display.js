@@ -6,22 +6,19 @@ import Link from "next/link";
 const Display = ({ contract, account }) => {
   const [data, setData] = useState("");
 
-  const fetchData = async (address) => {
-    try {
-      return await contract.display(address);
-    } catch (e) {
-      alert(e.message);
-      console.log(e.message);
-    }
-  };
-
   const getdata = async () => {
+    let dataArray;
     const Otheraddress = document.querySelector(".address").value;
-    const address = Otheraddress || account;
-    const dataArray = await fetchData(address);
-
-    if (dataArray && Object.keys(dataArray).length !== 0) {
-      const images = dataArray.toString().split(",").map((item, i) => {
+    if(Otheraddress){
+      dataArray = await contract.display(Otheraddress);
+    }else{
+      dataArray = await contract.display(account);
+    }
+    const isEmpty = Object.keys(dataArray).length===0;
+    if(!isEmpty){
+      const str = dataArray.toString();
+      const str_array = str.split(",");
+      const images =str_array.map((item, i)=>{
         const urlFetch = 'https://gateway.pinata.cloud/ipfs/'+item.substring(34)
         const source = urlFetch || File;
         return (
@@ -52,7 +49,7 @@ const Display = ({ contract, account }) => {
         address"
         style={{background: 'linear-gradient(0deg, rgba(88, 88, 88, 0.15) 0%, rgba(88, 88, 88, 0.15) 100%), rgba(208, 208, 208, 0.05)'}}
       ></input>
-      <button className="font-medium text-xl border-2 border-purple-800 px-8 py-2 rounded-tl-xl rounded-br-xl hover:bg-purple-800 ease-in-out duration-150 hover:font-semibold mt-10 self-center" onClick={getdata}>
+      <button className="font-medium text-xl border-2 border-purple-800 px-8 py-2 rounded-tl-xl rounded-br-xl hover:bg-purple-800 ease-in-out duration-150 hover:font-semibold mt-10 self-center" onClick={() => getdata()}>
         Get Data
       </button>
     </div>

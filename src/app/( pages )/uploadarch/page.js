@@ -54,7 +54,7 @@ const App = () => {
         alert(`Provider initialization failed due to an error: ${error.message}`);
       });
     } else {
-      console.error("Metamask não está instalado! Instale o Metamask para poder prosseguir");
+      alert("Metamask não está instalado! Instale o Metamask para poder prosseguir");
     }
   }, []);
 

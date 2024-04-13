@@ -41,12 +41,10 @@ export default function Registro() {
   const [emailUsuario, setEmailUsuario] = useState("")
   const [senhaUsuario, setSenhaUsuario] = useState("")
   const [nomeUsuario, setNomeUsuario] = useState("")
-  const [idadeUsuario, setIdadeUsuario] = useState(0)
   const [generoUsuario, setGeneroUsuario] = useState("")
 
   async function handleRegistroUsuario() {
     if (
-      idadeUsuario > 17 &&
       emailUsuario !== "" &&
       senhaUsuario !== "" &&
       nomeUsuario !== "" &&
@@ -66,7 +64,6 @@ export default function Registro() {
           email: emailUsuario,
           password: senhaUsuario,
           name: nomeUsuario,
-          idade: idadeUsuario,
           genero: generoUsuario,
         })
         alert("Cadastro feito com sucesso! Aproveite o BlockShare!")
@@ -117,15 +114,6 @@ export default function Registro() {
           onchange={(e: { target: { value: SetStateAction<string> } }) => {
             // Você precisa converter o valor do alvo do evento para uma string aqui
             setNomeUsuario(e.target.value as string)
-          }}
-        />
-        <StyledInputs
-          type="number"
-          placeholder="Idade"
-          value={idadeUsuario}
-          onchange={(e: { target: { value: SetStateAction<number> } }) => {
-            // Você precisa converter o valor do alvo do evento para um número aqui
-            setIdadeUsuario(e.target.value as number)
           }}
         />
         <select
